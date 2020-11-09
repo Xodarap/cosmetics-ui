@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Advice from '../components/advice'
 
 export default function DataTable({ r }) {
+  if(!r?.loaded) return <></>;
   const maxColorDiff = 441.7;
     return <><TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -24,6 +25,7 @@ export default function DataTable({ r }) {
             <TableRow key={k}>
               <TableCell>
                 {k}
+                {k == 'color distance' &&  ' (as % of maximum ΔRGB distance)'}
               </TableCell>
               <TableCell>
               {k == 'color distance' ?

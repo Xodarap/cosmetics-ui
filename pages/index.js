@@ -48,12 +48,6 @@ export default function Home() {
       setResults({ loading: true, src: event.target.result });
       var img = document.createElement("img");
       img.src = event.target.result;
-      var canvas = document.getElementById('preview')
-      canvas.width = img.width;
-      canvas.height = img.height;
-      resizeCanvas(canvas)
-      var ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       handleChange(files, setResults);
     }
     reader.readAsDataURL(files[0]);
@@ -82,7 +76,7 @@ export default function Home() {
           <Grid container justify="center" className={classes.loadingHolder}>
             {(results?.loading) && <CircularProgress />}
           </Grid>
-          <canvas id="preview" style={{ maxWidth: '100%' }}></canvas>
+          <Typography variant="h3">Numeric Results</Typography>
           <DataTable r={results}/>
         </Container>
         <Container maxWidth="lg" >
@@ -106,14 +100,6 @@ function resizeCanvas(canvas) {
   }
 }
 
-var drawLine = function (canvas, ctx, start, end, color) {
-  ctx.beginPath();
-  ctx.moveTo(start.x, start.y)
-  ctx.lineTo(end.x, end.y)
-  ctx.lineWidth = canvas.width * 0.003;
-  ctx.strokeStyle = color;
-  ctx.stroke();
-}
 
 const imageSize = (canvas, image) => {
   const max_width = canvas.width;
@@ -152,7 +138,7 @@ async function handleChange(files, setState) {
       body: formData
     }
   ).then(r => r.json());
-  setState({loading: false, r});
+  setState({loading: false, loaded: true, r});
   Array.from(document.getElementsByTagName('canvas')).forEach(canvas => {
     if(canvas.id == 'preview') return;
     const context = canvas.getContext('2d');
