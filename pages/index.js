@@ -56,10 +56,10 @@ export default function Home() {
     <>
       <div className={classes.firstHero}>
         <Typography component="h1" variant="h1" align="center" color="textPrimary" gutterBottom>
-          Hair
+          Makeup
       </Typography>
         <Typography variant="h5" align="center" color="textSecondary" component="p">
-          Do hair good
+          Do makeup good
       </Typography>
         <Container maxWidth="sm">
           <Paper>
