@@ -122,16 +122,8 @@ async function handleChange(files, setState) {
   const formData = new FormData()
   formData.append('image_file', files[0])
 
-  // var canvas = document.getElementById('myCanvas')
-  // var urlencoded = new URLSearchParams();
-  // urlencoded.append("image_base64", canvas.toDataURL('image/jpeg'))
-
-  // var myHeaders = new Headers();
-  // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
   const r = await fetch(process.env.NEXT_PUBLIC_API_URL,
     {
-      // headers: myHeaders,
       method: 'POST',
       body: formData
     }
@@ -142,12 +134,7 @@ async function handleChange(files, setState) {
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
   });
-  // var ctx = canvas.getContext("2d");
-  // var image = new Image();
-  // image.onload = function() {
-  //   ctx.drawImage(image, 0, 0);
-  // };
-  // image.src = 'data:image/jpeg;base64,' + r['gradient full']
+  
   ['image', 'gradient'].forEach(v => {
     const canvas = document.getElementById('canvas-' + v + '-full');
     const ctx = canvas.getContext("2d");
