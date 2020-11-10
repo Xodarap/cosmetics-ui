@@ -76,12 +76,12 @@ export default function Home() {
           <Grid container justify="center" className={classes.loadingHolder}>
             {(results?.loading) && <CircularProgress />}
           </Grid>
-          <Typography variant="h3">Numeric Results</Typography>
+          {results.loaded && <Typography variant="h3" align="center">Numeric Results</Typography>}
           <DataTable r={results}/>
         </Container>
-        <Container maxWidth="lg" >
+        {results.loaded && <Container maxWidth="lg" >
           <Pictures />
-        </Container>
+        </Container>}
       </div>
     </>
   )
@@ -106,12 +106,10 @@ const imageSize = (canvas, image) => {
   const max_height = canvas.height;
   var width = image.width;
   var height = image.height;
-  console.log(width, height)
   if (width > max_width) {
     height = (max_width / width) * height;
     width = max_width;
   }
-  console.log(width, height)
   if (height > max_height) {
     width = (max_height / height) * width;
     height = max_height;
@@ -159,18 +157,16 @@ async function handleChange(files, setState) {
     image.onload = function () {
       var width = image.width;
       var height = image.height;
-      console.log(width, height)
       if (width > max_width) {
         height = (max_width / width) * height;
         width = max_width;
       }
-      console.log(width, height)
       if (height > max_height) {
         width = (max_height / height) * width;
         height = max_height;
       }
       ctx.drawImage(image, 0, 0, image.width, image.height,     // source rectangle
-        0, 0, width, height);
+        (max_width - width) / 2, (max_height - height) / 2, width, height);
     };
     image.src = 'data:image/jpeg;base64,' + r[v + ' full']
   });
