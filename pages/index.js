@@ -129,7 +129,7 @@ async function handleChange(files, setState) {
   // var myHeaders = new Headers();
   // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-  const r = await fetch('http://localhost:7071/api/Cosmetics',
+  const r = await fetch(process.env.NEXT_PUBLIC_API_URL,
     {
       // headers: myHeaders,
       method: 'POST',
