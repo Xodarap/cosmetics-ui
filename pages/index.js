@@ -1,5 +1,5 @@
 import { DropzoneArea } from 'material-ui-dropzone'
-import { Container } from '@material-ui/core'
+import { Box, Container } from '@material-ui/core'
 import { useState } from 'react'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    backgroundImage: "url('/img/bg.jpg')",
+    backgroundImage: "url('/img/bg4.jpg')",
     backgroundSize: 'cover',
   },
   loadingHolder: {
@@ -56,10 +56,7 @@ export default function Home() {
     <>
       <div className={classes.firstHero}>
         <Typography component="h1" variant="h1" align="center" color="textPrimary" gutterBottom>
-          Makeup
-      </Typography>
-        <Typography variant="h5" align="center" color="textSecondary" component="p">
-          Do makeup good
+          2<wbr />Face<wbr />2<wbr />Furious
       </Typography>
         <Container maxWidth="sm">
           <Paper>
@@ -69,15 +66,15 @@ export default function Home() {
               filesLimit={1}
               maxFileSize={10000000}
               showPreviews={false}
+              previewText={false}
+              showAlerts={['error']}
             />
           </Paper>
         </Container>
         <Container maxWidth="sm" >
-          <Grid container justify="center" className={classes.loadingHolder}>
-            {(results?.loading) && <CircularProgress />}
-          </Grid>
+          {(results?.loading) && <Loading />}
           {results.loaded && <Typography variant="h3" align="center">Numeric Results</Typography>}
-          <DataTable r={results}/>
+          <DataTable r={results} />
         </Container>
         {results.loaded && <Container maxWidth="lg" >
           <Pictures />
@@ -85,6 +82,16 @@ export default function Home() {
       </div>
     </>
   )
+}
+
+function Loading() {
+  return <Box maxWidth='sm'
+    style={{ backgroundColor: '#FFF', marginTop: '5px', padding: '5px', borderRadius: '5px' }} >
+    <Typography>Please be patient. This can take up to a minute to upload, as we use high-resolution images.</Typography>
+    <Box style={{ margin: 'auto', width: '40px' }}>
+      <CircularProgress />
+    </Box>
+  </Box >
 }
 
 function resizeCanvas(canvas) {
@@ -128,13 +135,13 @@ async function handleChange(files, setState) {
       body: formData
     }
   ).then(r => r.json());
-  setState({loading: false, loaded: true, r});
+  setState({ loading: false, loaded: true, r });
   Array.from(document.getElementsByTagName('canvas')).forEach(canvas => {
-    if(canvas.id == 'preview') return;
+    if (canvas.id == 'preview') return;
     const context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
   });
-  
+
   ['image', 'gradient'].forEach(v => {
     const canvas = document.getElementById('canvas-' + v + '-full');
     const ctx = canvas.getContext("2d");
@@ -182,7 +189,7 @@ async function handleChange(files, setState) {
       }
       image.onload = function () {
         const [new_width, new_height] = imageSize(canvas, image)
-        ctx.drawImage(image, p1[0] - (image_type == 'gradient' ?  x : 0), p1[1] - (image_type == 'gradient' ?  y : 0), width, height, 0, 0, new_width, new_height);
+        ctx.drawImage(image, p1[0] - (image_type == 'gradient' ? x : 0), p1[1] - (image_type == 'gradient' ? y : 0), width, height, 0, 0, new_width, new_height);
       };
       image.src = 'data:image/jpeg;base64,' + r[image_type + ' full']
     })

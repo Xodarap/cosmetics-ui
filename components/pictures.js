@@ -10,7 +10,7 @@ import Container from '@material-ui/core/Container'
 import { Grid, Box } from '@material-ui/core';
 
 export default function Pictures({ }) {
-  const cell = (v, t) => <Grid item>
+  const cell = (v, t) => <Grid item style={{maxWidth: '100%'}}>
     <canvas id={v[0] + '-' + v[1] + '-' + t.toLowerCase()} />
     <Typography variant="body1">{v[0]} {v[1] == 'Yes' ? 'Edge Detection' : 'Normal'} {t}</Typography>
   </Grid>
@@ -21,7 +21,7 @@ export default function Pictures({ }) {
     <Container maxWidth="lg">
       <Grid container component={Paper} justify="center" >
         <Grid item  xs={12} lg={6}>
-          <canvas id="canvas-image-full" width="500" height="500" style={{ maxWidth: '500px', height: '500px' }} />
+          <canvas id="canvas-image-full" width="500" height="500" style={{ maxWidth: '100%' }} />
           <Typography variant="body1" align="center" color="textPrimary" gutterBottom style={{ maxWidth: '500px' }}>
             This image shows the facial landmarks identified by the algorithm. Importantly it displays the rectangles
             used to calculate eye and cheek wrinkles percentage. Color distance is also defined as
@@ -29,7 +29,7 @@ export default function Pictures({ }) {
           </Typography>
         </Grid>
         <Grid item xs={12} lg={6}>
-          <canvas id="canvas-gradient-full" width="500" height="500" style={{ maxWidth: '500px', height: '500px' }} />
+          <canvas id="canvas-gradient-full" width="500" height="500" style={{ maxWidth: '100%' }} />
           <Typography variant="body1" align="center" color="textPrimary" gutterBottom>
             This image is the edge detection algorithm's output. Importantly, it is used to identify wrinkles.
             The wrinkle percentage listed above is the percentage of pixels in the relevant rectangle which were
@@ -41,8 +41,8 @@ export default function Pictures({ }) {
         Zoomed in images
       </Typography>
       <Typography variant="body1" align="center" color="textPrimary" gutterBottom>
-        Thesse images are zoomed in images of the rectangles shown above in both the edge detection
-        and normmal images.
+        These images are zoomed in images of the rectangles shown above in both the edge detection
+        and normal images.
       </Typography>
       <Grid container component={Paper} justify="center" >
         {['Left', 'Right'].map(s => ['Yes', 'No'].map(y => [s, y])).flat().map(v => (
