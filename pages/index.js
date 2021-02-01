@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
   firstHero: {
     width: '100vw',
-    minHeight: '80vh',
+    minHeight: '100vh',
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
