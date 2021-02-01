@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    backgroundImage: "url('/img/bg4.jpg')",
+    backgroundImage: "linear-gradient(to bottom right, #AAA, #eee, #aaa)",
     backgroundSize: 'cover',
   },
   loadingHolder: {

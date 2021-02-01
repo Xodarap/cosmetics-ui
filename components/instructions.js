@@ -13,7 +13,11 @@ export default function Instructions() {
     return (
     <Container className={classes.root}>
         <Typography component="p" variant="body1" align="center" color="textPrimary" gutterBottom>
-            Upload a picture of yourself with a neutral expression and facing straight towards the camera for best results
+            Upload a picture of yourself wearing makeup and a machine learning algorithm will evaluate its quality.
+            You may wish to use  different styles or products on different halfs  of your face in order to compare multiple products.
+        </Typography>
+        <Typography component="p" variant="body1" align="center" color="textPrimary" gutterBottom>
+            Use a neutral expression and face straight towards the camera for best results
         </Typography>
     </Container>)
 }
