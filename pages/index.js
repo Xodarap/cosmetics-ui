@@ -9,6 +9,7 @@ import DataTable from '../components/data_table'
 import Instructions from '../components/instructions'
 import Paper from '@material-ui/core/Paper';
 import Pictures from '../components/pictures'
+import Footer from '../components/footer'
 
 const useStyles = makeStyles(theme => ({
   optionalColumn: {
@@ -80,6 +81,7 @@ export default function Home() {
           <Pictures />
         </Container>}
       </div>
+      <Footer />
     </>
   )
 }
