@@ -16,7 +16,8 @@ class MyDocument extends Document {
         <meta property="og:description"        content="Upload a picture of yourself wearing makeup and a machine learning algorithm will evaluate its quality." />
         <meta property="og:type"               content="website" />
         <meta property="og:image"              content="https://2face2furious.com/img/favicon.ico" />
-
+        
+        <title>2Face2Furious</title>
         <link rel="icon" type="image/png" href="/img/favicon.ico"/> 
         <script dangerouslySetInnerHTML={{__html: `
   window.dataLayer = window.dataLayer || [];
