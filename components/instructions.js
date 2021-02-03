@@ -13,7 +13,7 @@ export default function Instructions() {
     return (
     <Container className={classes.root}>
         <Typography component="p" variant="body1" align="center" color="textPrimary" gutterBottom>
-            Put one type of makeup half youur face, and a different type (or no makeup) on the other.
+            Put one type of makeup half of your face, and a different type (or no makeup) on the other.
             A machine learning algorithm will evaluate the quality of each.
         </Typography>
         <Typography component="p" variant="body1" align="center" color="textPrimary" gutterBottom>
