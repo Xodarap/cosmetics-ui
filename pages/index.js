@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <>
       <div className={classes.firstHero}>
-        <Collapse in={open}>
+        <Collapse in={open} style={{flexGrow: 1}}>
           <Alert severity="info" onClose={() => setOpen(false)}>Want to get recommendations on your TikTok account? Try <Link href="https://www.statschecklol.com">Stats Check Lol</Link> </Alert>
         </Collapse>
         <Typography component="h1" variant="h1" align="center" color="textPrimary" gutterBottom>
