@@ -1,7 +1,6 @@
 import { DropzoneArea } from 'material-ui-dropzone'
-import { Box, Container } from '@material-ui/core'
+import { Box, Collapse, Container, Link } from '@material-ui/core'
 import { useState } from 'react'
-import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -10,6 +9,7 @@ import Instructions from '../components/instructions'
 import Paper from '@material-ui/core/Paper';
 import Pictures from '../components/pictures'
 import Footer from '../components/footer'
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles(theme => ({
   optionalColumn: {
@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 export default function Home() {
   const classes = useStyles();
   const [results, setResults] = useState({})
+  const [open, setOpen] = React.useState(true);
 
   const imgWithPreview = (files) => {
     if (!files || files.length == 0) return;
@@ -56,9 +57,12 @@ export default function Home() {
   return (
     <>
       <div className={classes.firstHero}>
+        <Collapse in={open}>
+          <Alert severity="info" onClose={() => setOpen(false)}>Want to get recommendations on your TikTok account? Try <Link href="https://www.statschecklol.com">Stats Check Lol</Link> </Alert>
+        </Collapse>
         <Typography component="h1" variant="h1" align="center" color="textPrimary" gutterBottom>
           2<wbr />Face<wbr />2<wbr />Furious
-      </Typography>
+        </Typography>
         <Container maxWidth="sm">
           <Paper>
             <Instructions />
