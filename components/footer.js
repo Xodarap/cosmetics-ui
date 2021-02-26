@@ -8,7 +8,7 @@ export default function Footer() {
       <Typography>Made with ♡ by <a href="https://www.tiktok.com/@benthamite">@benthamite</a> •{' '}
       <a href="https://github.com/xodarap">GitHub</a> •{' '}
       Skincare gurus you should follow: {' '}
-      {['janellyskin', 'davislake_', 'whatyouneedtoknow'].map(name => <Link key={name} href="https://www.tiktok.com/@{name}">@{name}</Link>).reduce((accu, elem) => {
+      {['janellyskin', 'davislake_', 'whatyouneedtoknow'].map(name => <Link key={name} href={`https://www.tiktok.com/@${name}`}>@{name}</Link>).reduce((accu, elem) => {
             return accu === null ? [elem] : [...accu, <span> • </span>, elem]
         }, null)}
         </Typography>
