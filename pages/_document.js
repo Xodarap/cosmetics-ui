@@ -1,6 +1,6 @@
 import React from "react";
 import Document, { Head, Main, NextScript, Html } from "next/document";
-import { ServerStyleSheets } from "@material-ui/styles";
+import { ServerStyleSheets } from "@mui/styles"; // Updated import
 
 class MyDocument extends Document {
   render() {
@@ -63,7 +63,7 @@ MyDocument.getInitialProps = async (ctx) => {
   // 4. page.render
 
   // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets();
+  const sheets = new ServerStyleSheets(); // Updated class usage
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = () =>

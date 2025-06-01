@@ -8,13 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "babel-plugin-styled-components": "^1.11.1",
-    "material-ui-dropzone": "^3.5.0",
-    "next": "^10.0.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.1.0",
+    "@mui/lab": "^7.0.0-beta.12",
+    "@mui/material": "^7.1.0",
+    "next": "^15.3.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-dropzone": "^14.3.8"
   }
 }

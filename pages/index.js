@@ -1,4 +1,4 @@
-import { DropzoneArea } from 'material-ui-dropzone'
+import { useDropzone } from 'react-dropzone';
 import { Box, Collapse, Container, Link } from '@material-ui/core'
 import { useState } from 'react'
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -40,25 +40,36 @@ const useStyles = makeStyles(theme => ({
 
 export default function Home() {
   const classes = useStyles();
-  const [results, setResults] = useState({})
+  const [results, setResults] = useState({});
   const [open, setOpen] = React.useState(true);
 
-  const imgWithPreview = (files) => {
-    if (!files || files.length == 0) return;
-    var reader = new FileReader();
+  const onDrop = (acceptedFiles) => {
+    if (!acceptedFiles || acceptedFiles.length === 0) return;
+    const reader = new FileReader();
     reader.onloadend = function (event) {
       setResults({ loading: true, src: event.target.result });
       var img = document.createElement("img");
       img.src = event.target.result;
-      handleChange(files, setResults);
-    }
-    reader.readAsDataURL(files[0]);
-  }
+      handleChange(acceptedFiles, setResults);
+    };
+    reader.readAsDataURL(acceptedFiles[0]);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    maxFiles: 1,
+    maxSize: 10000000,
+    accept: 'image/*',
+  });
+
   return (
     <>
       <div className={classes.firstHero}>
-        <Collapse in={open} style={{flexGrow: 1}}>
-          <Alert severity="info" onClose={() => setOpen(false)}>Want to get recommendations on your TikTok account? Try <Link href="https://www.statschecklol.com">Stats Check Lol</Link> </Alert>
+        <Collapse in={open} style={{ flexGrow: 1 }}>
+          <Alert severity="info" onClose={() => setOpen(false)}>
+            Want to get recommendations on your TikTok account? Try{' '}
+            <Link href="https://www.statschecklol.com">Stats Check Lol</Link>
+          </Alert>
         </Collapse>
         <Typography component="h1" variant="h1" align="center" color="textPrimary" gutterBottom>
           2<wbr />Face<wbr />2<wbr />Furious
@@ -66,28 +77,26 @@ export default function Home() {
         <Container maxWidth="sm">
           <Paper>
             <Instructions />
-            <DropzoneArea
-              onChange={imgWithPreview.bind(this)}
-              filesLimit={1}
-              maxFileSize={10000000}
-              showPreviews={false}
-              previewText={false}
-              showAlerts={['error']}
-            />
+            <div {...getRootProps()} style={{ border: '2px dashed #ccc', padding: '20px', textAlign: 'center' }}>
+              <input {...getInputProps()} />
+              <Typography>Drag and drop an image here, or click to select one.</Typography>
+            </div>
           </Paper>
         </Container>
-        <Container maxWidth="sm" >
-          {(results?.loading) && <Loading />}
+        <Container maxWidth="sm">
+          {results?.loading && <Loading />}
           {results.loaded && <Typography variant="h3" align="center">Numeric Results</Typography>}
           <DataTable r={results} />
         </Container>
-        {results.loaded && <Container maxWidth="lg" >
-          <Pictures />
-        </Container>}
+        {results.loaded && (
+          <Container maxWidth="lg">
+            <Pictures />
+          </Container>
+        )}
       </div>
       <Footer />
     </>
-  )
+  );
 }
 
 function Loading() {
