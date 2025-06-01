@@ -1,15 +1,15 @@
 import { useDropzone } from 'react-dropzone';
-import { Box, Collapse, Container, Link } from '@material-ui/core'
+import { Box, Collapse, Container, Link } from '@mui/material'
 import { useState } from 'react'
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
+import { makeStyles } from '@mui/styles';
+import Typography from '@mui/material/Typography';
 import DataTable from '../components/data_table'
 import Instructions from '../components/instructions'
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import Pictures from '../components/pictures'
 import Footer from '../components/footer'
-import Alert from '@material-ui/lab/Alert';
+import { Alert } from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
   optionalColumn: {

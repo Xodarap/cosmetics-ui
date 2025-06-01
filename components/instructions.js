@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
-import { makeStyles } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(theme => ({
     root: {
