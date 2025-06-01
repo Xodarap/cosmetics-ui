@@ -1,8 +1,10 @@
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { createTheme } from '@mui/material/styles';
 
-const useStyles = makeStyles(theme => ({
+const theme = createTheme(); // Ensure theme is properly configured
+const useStyles = makeStyles(() => ({
     root: {
         'paddingTop': theme.spacing(5)
     },

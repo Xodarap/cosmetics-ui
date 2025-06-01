@@ -1,3 +1,4 @@
+import React from 'react'; // Add this import
 import { useDropzone } from 'react-dropzone';
 import { Box, Collapse, Container, Link } from '@mui/material'
 import { useState } from 'react'
@@ -10,8 +11,10 @@ import Paper from '@mui/material/Paper';
 import Pictures from '../components/pictures'
 import Footer from '../components/footer'
 import { Alert } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 
-const useStyles = makeStyles(theme => ({
+const theme = createTheme(); // Ensure theme is properly configured
+const useStyles = makeStyles(() => ({
   optionalColumn: {
     padding: theme.spacing(1),
     [theme.breakpoints.down('sm')]: {
