@@ -10,10 +10,29 @@ import Container from '@mui/material/Container'
 import { Grid, Box } from '@mui/material';
 
 export default function Pictures({ }) {
-  const cell = (v, t) => <Grid item style={{maxWidth: '100%'}}>
-    <canvas id={v[0] + '-' + v[1] + '-' + t.toLowerCase()} />
-    <Typography variant="body1">{v[0]} {v[1] == 'Yes' ? 'Edge Detection' : 'Normal'} {t}</Typography>
+const cell = (v, t) => (
+  <Grid
+    size={{ xs: 6, md: 3 }}
+    sx={{ 
+      maxWidth: '100%', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '200px' // Give the container some height
+    }}
+  >
+    <canvas 
+      id={v[0] + '-' + v[1] + '-' + t.toLowerCase()} 
+      width="150" 
+      height="150"
+      style={{ border: '1px solid #ccc' }} // Add border to see the canvas
+    />
+    <Typography variant="body1" align="center">
+      {v[0]} {v[1] == 'Yes' ? 'Edge Detection' : 'Normal'} {t}
+    </Typography>
   </Grid>
+);
   return <>
     <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
       Processed Images
