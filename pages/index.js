@@ -91,11 +91,9 @@ export default function Home() {
           {results.loaded && <Typography variant="h3" align="center">Numeric Results</Typography>}
           <DataTable r={results} />
         </Container>
-        {results.loaded && (
-          <Container maxWidth="lg">
+          <Container maxWidth="lg" style={{visibility: results.loaded ? 'visible' : 'hidden'}}>
             <Pictures />
           </Container>
-        )}
       </div>
       <Footer />
     </>
