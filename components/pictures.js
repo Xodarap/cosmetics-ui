@@ -19,17 +19,21 @@ export default function Pictures({ }) {
       Processed Images
     </Typography>
     <Container maxWidth="lg">
-      <Grid container component={Paper} justify="center" >
-        <Grid item  xs={12} lg={6}>
-          <canvas id="canvas-image-full" width="500" height="500" style={{ maxWidth: '100%' }} />
+      <Grid container component={Paper} justify="center" spacing={2} justifyContent="center">
+        <Grid size={{ xs: 12, md: 6 }}>
+          <canvas id="canvas-image-full" width="500" height="500" style={{ maxWidth: '100%', 
+    width: '100%',  
+    height: 'auto'   }} />
           <Typography variant="body1" align="center" color="textPrimary" gutterBottom style={{ maxWidth: '500px' }}>
             This image shows the facial landmarks identified by the algorithm. Importantly it displays the rectangles
             used to calculate eye and cheek wrinkles percentage. Color distance is also defined as
             the average color distance between the eye rectangle and the cheek rectangle on each side.
           </Typography>
         </Grid>
-        <Grid item xs={12} lg={6}>
-          <canvas id="canvas-gradient-full" width="500" height="500" style={{ maxWidth: '100%' }} />
+        <Grid size={{ xs: 12, md: 6 }}>
+          <canvas id="canvas-gradient-full" width="500" height="500" style={{ maxWidth:'100%', 
+    width: '100%',  
+    height: 'auto'  }} />
           <Typography variant="body1" align="center" color="textPrimary" gutterBottom>
             This image is the edge detection algorithm's output. Importantly, it is used to identify wrinkles.
             The wrinkle percentage listed above is the percentage of pixels in the relevant rectangle which were
